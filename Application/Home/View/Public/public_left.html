@@ -1,0 +1,194 @@
+<!-- BEGIN SIDEBAR -->
+
+<div class="page-sidebar nav-collapse collapse">
+
+    <!-- BEGIN SIDEBAR MENU -->
+
+    <ul class="page-sidebar-menu">
+
+        <li>
+
+            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+            <div class="sidebar-toggler hidden-phone"></div>
+
+            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+        </li>
+
+        <li>
+
+            <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+
+            <form class="sidebar-search">
+
+                <div class="input-box">
+
+                    <a href="javascript:;" class="remove"></a>
+
+                    <input type="text" placeholder="Search..." />
+
+                    <input type="button" class="submit" value=" " />
+
+                </div>
+
+            </form>
+
+            <!-- END RESPONSIVE QUICK SEARCH FORM -->
+
+        </li>
+
+        <li class="
+            <if condition="$controller eq 'Index' ">active</if>
+        start ">
+
+        <a href="{:U('Index/index')}">
+
+            <i class="icon-home"></i>
+
+            <span class="title">首页</span>
+
+        </a>
+
+        </li>
+        <li class="
+             <if condition="$uri eq 'Product' ">active</if>
+        ">
+        <a href="javascript:;">
+            <i class="icon-th"></i>
+            <span class="title">产品管理</span>
+            <span class="selected"></span>
+            <!--<span class="arrow open"></span>-->
+                    <span class="arrow
+                     <if condition="$controller eq 'Product' ">open</if>
+            "></span>
+
+        </a>
+
+        <ul class="sub-menu">
+
+            <li
+            <if condition="$uri eq 'Product/index' ">active</if>
+            >
+
+            <a href="{:U('Product/index')}">
+
+                产品列表</a>
+
+            </li>
+        </ul>
+
+        </li>
+        <li class="">
+
+            <a href="javascript:;">
+
+                <i class="icon-sitemap"></i>
+
+                <span class="title">报价管理</span>
+
+                <span class="selected"></span>
+
+                <span class="arrow"></span>
+
+            </a>
+
+            <ul class="sub-menu">
+
+                <li >
+
+                    <a href="layout_horizontal_sidebar_menu.html">
+
+                        国内报价</a>
+                </li>
+
+                <li >
+
+                    <a href="layout_horizontal_menu1.html">
+
+                        国外报价</a>
+                </li>
+                <li >
+
+                    <a href="layout_horizontal_menu1.html">
+
+                        报价系数管理</a>
+                </li>
+            </ul>
+
+        </li>
+        <li class="">
+
+            <a href="javascript:;">
+
+                <i class="icon-sitemap"></i>
+
+                <span class="title">站点管理</span>
+
+                <span class="selected"></span>
+
+                <span class="arrow"></span>
+
+            </a>
+
+            <ul class="sub-menu">
+
+                <li >
+                    <a href="layout_horizontal_sidebar_menu.html">
+
+                        站点信息</a>
+                </li>
+
+                <!--<li >-->
+
+                <!--<a href="layout_horizontal_menu1.html">-->
+
+                <!--国外报价</a>-->
+                <!--</li>-->
+                <!--<li >-->
+
+                <!--<a href="layout_horizontal_menu1.html">-->
+
+                <!--报价系数管理</a>-->
+                <!--</li>-->
+            </ul>
+
+        </li>
+        <li class="
+            <if condition="$controller eq 'User' ">active</if>
+        last">
+        <a href="javascript:;">
+            <i class="icon-user"></i>
+            <span class="title">用户管理</span>
+                    <span class="arrow
+                    <if condition="$controller eq 'User' ">open</if>
+            "></span>
+        </a>
+        <ul class="sub-menu">
+            <li
+            <if condition="$uri eq 'User/index' ">class="active"</if>
+            >
+            <a href="{:U('User/index')}">
+                用户列表</a>
+            </li>
+            <li
+            <if condition="$uri eq '' ">class="active"</if>
+            >
+            <a href="login.html">
+                用户组管理</a>
+            </li>
+            <li >
+                <a href="login.html">
+                    用户组权限管理</a>
+            </li>
+
+        </ul>
+
+        </li>
+    </ul>
+
+    <!-- END SIDEBAR MENU -->
+
+</div>
+
+<!-- END SIDEBAR -->

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="zh-cn" class="ie8"> <![endif]-->
+
+<!--[if IE 9]> <html lang="zh-cn" class="ie9"> <![endif]-->
+
+<!--[if !IE]><!--> <html lang="zh-cn"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>{$site.name } | {$title}</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <meta content="{$site.description }" name="description" />
+
+    <meta content="{$site.author }" name="author" />
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <block name="Css"></block>
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed ">
+
+<!-- BEGIN HEADER -->
+
+<div class="header navbar navbar-inverse navbar-fixed-top">
+
+    <!-- BEGIN TOP NAVIGATION BAR -->
+
+    <include file="Public:public_top" />
+
+    <!-- END TOP NAVIGATION BAR -->
+
+</div>
+
+<!-- END HEADER -->
+
+<!-- BEGIN CONTAINER -->
+
+<div class="page-container row-fluid">
+
+    　<include file="Public:public_left" />
+
+    <!-- BEGIN PAGE -->
+
+    <div class="page-content">
+
+        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+        <div id="portlet-config" class="modal hide">
+
+            <div class="modal-header">
+
+                <button data-dismiss="modal" class="close" type="button"></button>
+
+                <h3>portlet Settings</h3>
+
+            </div>
+
+            <div class="modal-body">
+
+                <p>Here will be a configuration form</p>
+
+            </div>
+
+        </div>
+        <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <!-- BEGIN PAGE CONTAINER-->
+        <div class="container-fluid">
+            <!-- BEGIN PAGE HEADER-->
+            <div class="row-fluid">
+                <div class="span12">
+                    <h3 class="page-title">
+                        {$page_title} <small>{$title}</small>
+                    </h3>
+                    <ul class="breadcrumb">
+                        <if condition="$uri neq 'Index/index' ">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a href="{:U('Index/index')}">首页</a>
+                                <i class="icon-angle-right"></i>
+                            </li>
+                            <li>
+                                <a href="#">{$page_title}</a>
+                            </li>
+                            <else/>
+                            <li>
+                                <i class="icon-home"></i>
+                                <a href="#">首页</a>
+
+                            </li>
+
+                        </if>
+                    </ul>
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+                </div>
+            </div>
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE CONTENT-->
+
+            <div class="row-fluid">
+
+                <div class="span12">
+
+                    <block name="Content"></block>
+
+                </div>
+
+            </div>
+
+            <!-- END PAGE CONTENT-->
+
+        </div>
+
+        <!-- END PAGE CONTAINER-->
+    </div>
+    <!-- END PAGE -->
+
+</div>
+
+<!-- END CONTAINER -->
+<include file="Public:index_footer" />
+
