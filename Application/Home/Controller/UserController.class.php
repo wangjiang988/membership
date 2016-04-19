@@ -37,8 +37,10 @@ class UserController extends BaseController
         }
         $model = D('Admin');
         $update = array();
-        $update['id'] = $data['id'];
-        $update[$data['name']] = $data['value'];
+        $update['id'] = trim($data['id']);
+        $data['name'] = trim($data['name']);
+        $update[$data['name']] = $data['name'] =='password'? md5(md5(trim($data['value']))):trim($data['value']);
+        $update['update_at'] = time();
         try{
             $ret = $model->save($update);
         }catch (Exception $e ){
@@ -59,12 +61,40 @@ class UserController extends BaseController
         $data = I('post.');
         if($this->model->create($data)){
             // 增加或者更改其中的属性
-            $this->model->add();
-        }
-         else{
-             exit( $this->model->getError());
+            try{
+                $ret = $this->model->add();
+                if($ret){
+                    if(IS_AJAX) echo json_encode(array('errCode'=>0,'msg'=>'创建成功'));
+                    else $this->success("创建成功");
+                }else{
+                    if(IS_AJAX) echo json_encode(array('errCode'=>-1,'msg'=>'创建失败'));
+                    else $this->success("创建失败");
+                }
+            }catch (Exception $e){
+                if(IS_AJAX){ echo json_encode(array('errCode'=>-1,'msg'=>json_encode($e)));exit(0);}
+                else $this->success("创建失败,sql错误");
+            }
+        }else{
+            if(IS_AJAX){ echo json_encode(array('errCode'=>-1,'msg'=>($this->model->getError())));exit(0);}
+            else $this->success("创建失败,sql错误");
         }
     }
+    /**
+     * 查看资料
+     */
+    public function profile(){
+        $current_user =  $this->getFormatInfo();
+
+        $info = M('admin')->where('name=\''.$current_user['username'].'\'')->find();
+        if(!$info){
+            echo "没有找到当前用户，或许您已经切换过用户，或者修改过登录用户名． 请重新<a href='".U('User/login')."'>登录 </a>";
+            exit(0);
+        }
+        $this->assign('userInfo',$info);
+        $this->display();
+
+    }
+
     /**
      * 禁用用户
      */
@@ -75,8 +105,20 @@ class UserController extends BaseController
     /**
      * 删除用户
      */
-    public function delete(){
+    public function delete()
+    {
+        $ids = I('post.ids');
 
+        if(!$ids){
+            echo json_encode(array('errCode'=>'404',"msg"=>'参数错误'));
+        }
+//        $arr_ids = explode(',',$ids);
+        $model = D('Admin');
+        $ret = $model->delete($ids);
+        if($ret)
+            echo json_encode(array('errCode'=>'0',"msg"=>'删除成功'));
+        else
+            echo json_encode(array('errCode'=>'-1',"msg"=>'删除失败'));
     }
 
     /**

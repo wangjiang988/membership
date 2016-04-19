@@ -1,0 +1,37 @@
+article.active{
+    margin-top: 50px;
+    padding: 10px 30px;
+}
+
+input{
+    min-height: 50px;
+}
+.input-row span{
+    min-height: 50px;
+    line-height: 29px;
+    color: #b1b1b1;
+    margin-left: -2px;
+}
+.info_top{
+    margin-bottom: 30px;
+}
+
+.list li div{
+    padding: 5px 2px;
+}
+
+.tm10 {
+    margin-top: 10px;
+}
+.unread{
+    color:#262F3D;
+    font-size: 14px;
+}
+.read{
+    color:#666666;
+    font-size: 14px;
+}
+.notice_content{
+    color:#666666;
+    font-size: 14px;
+}

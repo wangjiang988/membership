@@ -466,7 +466,7 @@ Page container
 }
 
 .page-header-fixed .page-container {
-  margin-top: 42px;  
+  margin-top: 22px;
 }
 
 /***
@@ -1143,12 +1143,12 @@ Form stuff
   padding-left: 190px;
 }
 
-.portlet.box .form .form-actions,
-.portlet.solid .form .form-actions {
-  margin-left:-10px !important;
-  margin-right:-10px !important;
-  margin-bottom: -10px !important;
-} 
+/*.portlet.box .form .form-actions,*/
+/*.portlet.solid .form .form-actions {*/
+  /*margin-left:-10px !important;*/
+  /*margin-right:-10px !important;*/
+  /*margin-bottom: -10px !important;*/
+/*} */
 
 /***
 Bordered form layout
@@ -5332,4 +5332,22 @@ Dropdown Checkboxes (in v1.3)
 td input{
   margin: 0 !important;
   padding: 0!important;
+}
+
+.input-title{
+  max-width: 80px;
+}
+.input-value{
+  max-width: 200px;
+}
+.input-tips{
+  color: #666666;
+  min-width:200px ;
+}
+#sample_1 th{
+  font-size: 16px!important;
+}
+
+form .error{
+  color:#b94a48;
 }

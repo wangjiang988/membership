@@ -119,7 +119,10 @@ class Dispatcher {
             define('__INFO__',trim($_SERVER['PATH_INFO'],'/'));
             // URL后缀
             define('__EXT__', strtolower(pathinfo($_SERVER['PATH_INFO'],PATHINFO_EXTENSION)));
-            $_SERVER['PATH_INFO'] = __INFO__;     
+            $_SERVER['PATH_INFO'] = __INFO__;
+
+
+
             if(!defined('BIND_MODULE') && (!C('URL_ROUTER_ON') || !Route::check())){
                 if (__INFO__ && C('MULTI_MODULE')){ // 获取模块名
                     $paths      =   explode($depr,__INFO__,2);
@@ -136,9 +139,21 @@ class Dispatcher {
         // URL常量
         define('__SELF__',strip_tags($_SERVER[C('URL_REQUEST_URI')]));
 
-        // 获取模块名称
-        define('MODULE_NAME', defined('BIND_MODULE')? BIND_MODULE : self::getModule($varModule));
-        
+        //change pathinfo wangjiang
+        $path_arr = explode('/',$_SERVER['PATH_INFO']);
+        if(count($path_arr) == 3){
+            // 获取模块名称
+            define('MODULE_NAME', $path_arr[0]);
+            unset($path_arr[0]);
+            $_SERVER['PATH_INFO'] = implode('/',$path_arr);
+        }else{
+            define('MODULE_NAME', defined('BIND_MODULE')? BIND_MODULE : self::getModule($varModule));
+        }
+        //end wangjiang
+        //下面这两行是原始代码，被我注释掉　wangjiang
+//        // 获取模块名称
+//        define('MODULE_NAME', defined('BIND_MODULE')? BIND_MODULE : self::getModule($varModule));
+        //end wangjiang
         // 检测模块是否存在
         if( MODULE_NAME && (defined('BIND_MODULE') || !in_array_case(MODULE_NAME,C('MODULE_DENY_LIST')) ) && is_dir(APP_PATH.MODULE_NAME)){
             // 定义当前模块路径

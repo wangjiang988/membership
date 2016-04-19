@@ -22,15 +22,15 @@
 
             <form class="sidebar-search">
 
-                <div class="input-box">
+                <!--<div class="input-box">-->
 
-                    <a href="javascript:;" class="remove"></a>
+                    <!--<a href="javascript:;" class="remove"></a>-->
 
-                    <input type="text" placeholder="Search..." />
+                    <!--<input type="text" placeholder="Search..." />-->
 
-                    <input type="button" class="submit" value=" " />
+                    <!--<input type="button" class="submit" value=" " />-->
 
-                </div>
+                <!--</div>-->
 
             </form>
 
@@ -52,15 +52,15 @@
 
         </li>
         <li class="
-             <if condition="$uri eq 'Product' ">active</if>
+             <if condition="$controller eq 'Member' or $controller eq 'Card' ">active</if>
         ">
         <a href="javascript:;">
             <i class="icon-th"></i>
-            <span class="title">产品管理</span>
+            <span class="title">会员管理</span>
             <span class="selected"></span>
             <!--<span class="arrow open"></span>-->
                     <span class="arrow
-                     <if condition="$controller eq 'Product' ">open</if>
+                     <if condition="$controller eq 'Member'  or $controller eq 'Card' ">open</if>
             "></span>
 
         </a>
@@ -68,91 +68,81 @@
         <ul class="sub-menu">
 
             <li
-            <if condition="$uri eq 'Product/index' ">active</if>
+            <if condition="$uri eq 'Member/index' ">class="active"</if>
             >
 
-            <a href="{:U('Product/index')}">
+            <a href="{:U('Member/index')}">
 
-                产品列表</a>
+                会员列表</a>
+
+            </li>
+            <li
+            <if condition="$uri eq 'Card/index' ">class="active"</if>
+            >
+
+            <a href="{:U('Card/index')}">
+
+                会员卡列表</a>
 
             </li>
         </ul>
 
         </li>
         <li class="">
-
             <a href="javascript:;">
-
                 <i class="icon-sitemap"></i>
-
-                <span class="title">报价管理</span>
-
+                <span class="title">微信卡券管理</span>
                 <span class="selected"></span>
-
                 <span class="arrow"></span>
 
             </a>
 
             <ul class="sub-menu">
-
                 <li >
-
                     <a href="layout_horizontal_sidebar_menu.html">
-
-                        国内报价</a>
-                </li>
-
-                <li >
-
-                    <a href="layout_horizontal_menu1.html">
-
-                        国外报价</a>
-                </li>
-                <li >
-
-                    <a href="layout_horizontal_menu1.html">
-
-                        报价系数管理</a>
+                        微信卡券列表</a>
                 </li>
             </ul>
 
         </li>
-        <li class="">
-
+        <li class="
+        <if condition="$controller eq 'Notice' ">active</if>
+        ">
             <a href="javascript:;">
-
                 <i class="icon-sitemap"></i>
-
-                <span class="title">站点管理</span>
-
+                <span class="title">公告管理</span>
                 <span class="selected"></span>
-
-                <span class="arrow"></span>
+                <span class="arrow <if condition="$controller eq 'Notice' ">open</if>"></span>
 
             </a>
 
             <ul class="sub-menu">
-
-                <li >
-                    <a href="layout_horizontal_sidebar_menu.html">
-
-                        站点信息</a>
+                <li
+                <if condition="$uri eq 'Notice/index' ">class="active"</if>
+                >
+                    <a href="{:U('Notice/index')}">
+                        公告列表</a>
                 </li>
-
-                <!--<li >-->
-
-                <!--<a href="layout_horizontal_menu1.html">-->
-
-                <!--国外报价</a>-->
-                <!--</li>-->
-                <!--<li >-->
-
-                <!--<a href="layout_horizontal_menu1.html">-->
-
-                <!--报价系数管理</a>-->
-                <!--</li>-->
             </ul>
 
+        </li>
+        <li class="
+        <if condition="$controller eq 'Site' ">active</if>
+        ">
+            <a href="javascript:;">
+                <i class="icon-sitemap"></i>
+                <span class="title">站点管理</span>
+                <span class="selected"></span>
+                <span class="arrow <if condition="$controller eq 'Site' ">open</if>"></span>
+            </a>
+            <ul class="sub-menu">
+                <li
+                <if condition="$uri eq 'Site/index' ">class="active"</if>
+                >
+                    <a href="{:U('Site/index')}">
+                        站点信息</a>
+                </li>
+            </ul>
         </li>
         <li class="
             <if condition="$controller eq 'User' ">active</if>

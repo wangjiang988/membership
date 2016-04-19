@@ -56,4 +56,9 @@ class BaseController extends Controller
         else
             return $_COOKIE['info'];
     }
+    public function getFormatInfo(){
+       return (array)json_decode(base64_decode($this->getUser()));
+    }
+
+    
 }

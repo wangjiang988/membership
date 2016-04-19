@@ -4,11 +4,11 @@ return array(
     /* 数据库设置 */
     'DB_TYPE'               =>  'mysql',     // 数据库类型
     'DB_HOST'               =>  '127.0.0.1', // 服务器地址
-    'DB_NAME'               =>  'heji',          // 数据库名
-    'DB_USER'               =>  'heji',      // 用户名
+    'DB_NAME'               =>  'membership',          // 数据库名
+    'DB_USER'               =>  'membership',      // 用户名
     'DB_PWD'                =>  'asdf',          // 密码
     'DB_PORT'               =>  '3306',        // 端口
-    'DB_PREFIX'             =>  'heji_',    // 数据库表前缀
+    'DB_PREFIX'             =>  'ms_',    // 数据库表前缀
     'DB_PARAMS'          	=>  array(), // 数据库连接参数
     'DB_DEBUG'  			=>  TRUE, // 数据库调试模式 开启后可以记录SQL日志
     'DB_FIELDS_CACHE'       =>  true,        // 启用字段缓存
@@ -17,4 +17,9 @@ return array(
 //    'DB_RW_SEPARATE'        =>  false,       // 数据库读写是否分离 主从式有效
 //    'DB_MASTER_NUM'         =>  1, // 读写分离后 主服务器数量
 //    'DB_SLAVE_NO'           =>  '', // 指定从服务器序号
+
+    'MODULE_ALLOW_LIST'     =>  array(
+        'Home',
+        'm',
+    ),
 );

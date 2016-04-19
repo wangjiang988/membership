@@ -1,0 +1,42 @@
+[ 2016-04-18T14:09:56+08:00 ] 127.0.0.1 /Member/%7B:U('Member/view')%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000196s ]
+ERR: 无法加载模块:Member
+
+[ 2016-04-18T14:09:57+08:00 ] 127.0.0.1 /Member/%7B:U('Member/view')%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000196s ]
+ERR: 无法加载模块:Member
+
+[ 2016-04-18T14:09:58+08:00 ] 127.0.0.1 /Member/%7B:U('Member/view')%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000196s ]
+ERR: 无法加载模块:Member
+
+[ 2016-04-18T14:09:58+08:00 ] 127.0.0.1 /Member/%7B:U('Member/view')%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000195s ]
+ERR: 无法加载模块:Member
+
+[ 2016-04-18T14:34:45+08:00 ] 127.0.0.1 /Member/%7BU('Member/getCards')%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000285s ]
+ERR: 无法加载模块:Member
+
+[ 2016-04-18T14:35:13+08:00 ] 127.0.0.1 /Member/%7BU('Member/getCards')%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000198s ]
+ERR: 无法加载模块:Member
+
+[ 2016-04-18T14:35:24+08:00 ] 127.0.0.1 /Member/%7BU('Member/getCards')%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000327s ]
+ERR: 无法加载模块:Member
+

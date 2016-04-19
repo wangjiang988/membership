@@ -12,19 +12,31 @@ var TableManaged = function () {
                 // do something with the new cell value
                 target = evt.target;
                 name = $(target).data('name');
-                id = $(target).attr('tabindex');
-                console.log();
+                id = $(target).data('id');
                 if (!newValue) {
                     return false; // reject change
                 }else{
-                    $.post('/User/update',{
-                        id: id,
-                        name:name,
-                        value:newValue,
-                    },function(data){
-                        data = eval('('+data+')');
-                        if(data.errCode != 0) return false;
-                        else return true;
+                    $.ajax({
+                        type : "post",
+                        url : "/User/update",
+                        data : "id=" + id+"&name="+name+"&value="+newValue,
+                        async : false,
+                        success : function(data){
+                            data = eval("(" + data + ")");
+                            // aDataSet = data;
+                            if(data.errCode != 0){
+                                alert('修改失败');
+                                $(target).text($("#temp").text());
+                                return false;
+                            }
+                            else{
+                                alert('修改成功');
+                                if(name == 'password'){
+                                    $(target).text('******');
+                                }
+                                return true;
+                            }
+                        }
                     });
                     return true;
                 }
@@ -49,8 +61,42 @@ var TableManaged = function () {
             jQuery('#sample_1_wrapper .dataTables_length select').addClass("m-wrap small"); // modify table per page dropdown
             //jQuery('#sample_1_wrapper .dataTables_length select').select2(); // initialzie select2 dropdown
 
+            /**
+             * 删除操作
+             */
+            jQuery('#sample_editable_1_delete').click(function(){
+                var set = jQuery('#sample_1 .group-checkable').attr("data-set");
+                var ids = [];
+                jQuery(set).each(function () {
+                    if ($(this).is(":checked")) {
+                        ids.push($(this).val());
+                    }
+                });
+                if(confirm("确认删除数据么?")){
+                    $.ajax({
+                        type : "post",
+                        url : "/User/delete",
+                        data : "ids=" + ids ,
+                        async : false,
+                        success : function(data){
+                            data = eval("(" + data + ")");
+                            // aDataSet = data;
+                            if(data.errCode != 0){
+                                alert('删除失败');
+                                $(target).text($("#temp").text());
+                                return false;
+                            }
+                            else{
+                                alert('删除成功');
+                                location.reload();
+                            }
+                        }
+                    });
+                }
 
-        }
+            });
+
+        },
 
     };
 

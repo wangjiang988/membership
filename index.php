@@ -21,13 +21,16 @@ define('APP_DEBUG',True);
 define('APP_PATH','./Application/');
 //定义默认模块
 define('BIND_MODULE','Home');
+//用来创建m模块（手机端）
+//define('BIND_MODULE','m');
 //加上下面这一行，使用U方法的时候就不会带上index.php
 define('__APP__', '');
-
 //定义网站根目录
 define('WEB_PATH',dirname(__FILE__));
-// 引入ThinkPHP入口文件
+//定义kint方法
 require './kint/Kint.class.php';
+
+// 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';
 
 // 亲^_^ 后面不需要任何代码了 就是如此简单

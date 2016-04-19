@@ -584,15 +584,15 @@
 
             <form class="sidebar-search">
 
-                <div class="input-box">
+                <!--<div class="input-box">-->
 
-                    <a href="javascript:;" class="remove"></a>
+                    <!--<a href="javascript:;" class="remove"></a>-->
 
-                    <input type="text" placeholder="Search..." />
+                    <!--<input type="text" placeholder="Search..." />-->
 
-                    <input type="button" class="submit" value=" " />
+                    <!--<input type="button" class="submit" value=" " />-->
 
-                </div>
+                <!--</div>-->
 
             </form>
 
@@ -614,15 +614,15 @@
 
         </li>
         <li class="
-             <?php if($uri == 'Product' ): ?>active<?php endif; ?>
+             <?php if($controller == 'Member' or $controller == 'Card' ): ?>active<?php endif; ?>
         ">
         <a href="javascript:;">
             <i class="icon-th"></i>
-            <span class="title">产品管理</span>
+            <span class="title">会员管理</span>
             <span class="selected"></span>
             <!--<span class="arrow open"></span>-->
                     <span class="arrow
-                     <?php if($controller == 'Product' ): ?>open<?php endif; ?>
+                     <?php if($controller == 'Member' or $controller == 'Card' ): ?>open<?php endif; ?>
             "></span>
 
         </a>
@@ -630,91 +630,81 @@
         <ul class="sub-menu">
 
             <li
-            <?php if($uri == 'Product/index' ): ?>active<?php endif; ?>
+            <?php if($uri == 'Member/index' ): ?>class="active"<?php endif; ?>
             >
 
-            <a href="<?php echo U('Product/index');?>">
+            <a href="<?php echo U('Member/index');?>">
 
-                产品列表</a>
+                会员列表</a>
+
+            </li>
+            <li
+            <?php if($uri == 'Card/index' ): ?>class="active"<?php endif; ?>
+            >
+
+            <a href="<?php echo U('Card/index');?>">
+
+                会员卡列表</a>
 
             </li>
         </ul>
 
         </li>
         <li class="">
-
             <a href="javascript:;">
-
                 <i class="icon-sitemap"></i>
-
-                <span class="title">报价管理</span>
-
+                <span class="title">微信卡券管理</span>
                 <span class="selected"></span>
-
                 <span class="arrow"></span>
 
             </a>
 
             <ul class="sub-menu">
-
                 <li >
-
                     <a href="layout_horizontal_sidebar_menu.html">
-
-                        国内报价</a>
-                </li>
-
-                <li >
-
-                    <a href="layout_horizontal_menu1.html">
-
-                        国外报价</a>
-                </li>
-                <li >
-
-                    <a href="layout_horizontal_menu1.html">
-
-                        报价系数管理</a>
+                        微信卡券列表</a>
                 </li>
             </ul>
 
         </li>
-        <li class="">
-
+        <li class="
+        <?php if($controller == 'Notice' ): ?>active<?php endif; ?>
+        ">
             <a href="javascript:;">
-
                 <i class="icon-sitemap"></i>
-
-                <span class="title">站点管理</span>
-
+                <span class="title">公告管理</span>
                 <span class="selected"></span>
-
-                <span class="arrow"></span>
+                <span class="arrow <?php if($controller == 'Notice' ): ?>open<?php endif; ?>"></span>
 
             </a>
 
             <ul class="sub-menu">
-
-                <li >
-                    <a href="layout_horizontal_sidebar_menu.html">
-
-                        站点信息</a>
+                <li
+                <?php if($uri == 'Notice/index' ): ?>class="active"<?php endif; ?>
+                >
+                    <a href="<?php echo U('Notice/index');?>">
+                        公告列表</a>
                 </li>
-
-                <!--<li >-->
-
-                <!--<a href="layout_horizontal_menu1.html">-->
-
-                <!--国外报价</a>-->
-                <!--</li>-->
-                <!--<li >-->
-
-                <!--<a href="layout_horizontal_menu1.html">-->
-
-                <!--报价系数管理</a>-->
-                <!--</li>-->
             </ul>
 
+        </li>
+        <li class="
+        <?php if($controller == 'Site' ): ?>active<?php endif; ?>
+        ">
+            <a href="javascript:;">
+                <i class="icon-sitemap"></i>
+                <span class="title">站点管理</span>
+                <span class="selected"></span>
+                <span class="arrow <?php if($controller == 'Site' ): ?>open<?php endif; ?>"></span>
+            </a>
+            <ul class="sub-menu">
+                <li
+                <?php if($uri == 'Site/index' ): ?>class="active"<?php endif; ?>
+                >
+                    <a href="<?php echo U('Site/index');?>">
+                        站点信息</a>
+                </li>
+            </ul>
         </li>
         <li class="
             <?php if($controller == 'User' ): ?>active<?php endif; ?>
@@ -840,9 +830,9 @@
 
             <div class="btn-group">
 
-                <button id="sample_editable_1_new" class="btn green">
+                <button href="#addModal" id="sample_editable_1_new" data-toggle="modal" class="btn green">
 
-                    新增 <i class="icon-plus"></i>
+                     新增 <i class="icon-plus"></i>
 
                 </button>
 
@@ -876,28 +866,28 @@
             </div>
 
         </div>
-
         <table class="table table-striped table-bordered" id="sample_1">
             <thead>
             <tr>
                 <th style="width:8px;" >
                     <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                    <div style="display: none;" id="temp"></div>
                 </th>
-                <th id="name">用户名</th>
-                <th id="nickname">昵称</th>
-                <th id="email" class="hidden-480">邮箱</th>
-                <th id="create_at" class="hidden-480">创建时间</th>
-                <th id="status">状态</th>
+                <th  >用户名</th>
+                <th  >昵称</th>
+                <th   class="hidden-480">邮箱</th>
+                <th  class="hidden-480">创建时间</th>
+                <th  >状态</th>
             </tr>
 
             </thead>
 
             <tbody>
             <?php if(!empty($list["list"])): if(is_array($list["list"])): $i = 0; $__LIST__ = $list["list"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr class="odd gradeX" id="<?php echo ($vo["id"]); ?>">
-                <td><input type="checkbox" name="id" class="checkboxes" value="<?php echo ($vo["id"]); ?>" /></td>
-                <td data-name="name1"><?php echo ($vo["name"]); ?></td>
-                <td data-name="nickname"><?php echo ($vo["nickname"]); ?></td>
-                <td class="hidden-480" data-name="email"> <?php echo ($vo["email"]); ?> </td>
+                <td><?php if($vo["id"] != 1): ?><input type="checkbox" name="id" class="checkboxes" value="<?php echo ($vo["id"]); ?>" /><?php endif; ?></td>
+                <td class="editable" data-name="name" data-id="<?php echo ($vo["id"]); ?>"><?php echo ($vo["name"]); ?></td>
+                <td class="editable" data-name="nickname"  data-id="<?php echo ($vo["id"]); ?>"><?php echo ($vo["nickname"]); ?></td>
+                <td class="hidden-480 editable" data-name="email"  data-id="<?php echo ($vo["id"]); ?>"> <?php echo ($vo["email"]); ?> </td>
                 <td class="center hidden-480" data-name="create_at"><input style="display: none;"/><?php echo (date("Y-m-d H:i",$vo["create_at"])); ?></td>
                 <td ><span class="label label-success"><input style="display: none;"/><?php if($vo["status"] == 1): ?>可用 <?php else: ?>禁止<?php endif; ?></span></td>
             </tr><?php endforeach; endif; else: echo "" ;endif; endif; ?>
@@ -906,6 +896,94 @@
         </table>
         <div class="pagination-right"><?php echo ($list["page"]); ?></div>
 
+    </div>
+
+    <!-- Modal -->
+    <div id="addModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h3 id="myModalLabel">新增用户</h3>
+        </div>
+        <form action="<?php echo U('User/create');?>" id="addUserForm" method="post" class="form-horizontal">
+        <div class="modal-body">
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+
+
+                    <div class="control-group">
+
+                        <label class="control-label">用户名</label>
+
+                        <div class="controls">
+
+                            <input type="text" id="name" name="name" class="span6 m-wrap" />
+
+                            <span class="help-inline">用户名唯一</span>
+
+                        </div>
+
+                    </div>
+                    <div class="control-group">
+
+                        <label class="control-label">昵称</label>
+
+                        <div class="controls">
+
+                            <input type="text" id="nickname" name="nickname" class="span6 m-wrap" />
+
+                            <span class="help-inline">昵称可重复</span>
+
+                        </div>
+
+                    </div>
+                    <div class="control-group">
+
+                        <label class="control-label">密码</label>
+
+                        <div class="controls">
+
+                            <input type="password" class="span6 m-wrap" />
+
+                            <span class="help-inline">密码</span>
+
+                        </div>
+
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">邮箱</label>
+                        <div class="controls">
+                            <div class="input-prepend"><span class="add-on">@</span><input class="m-wrap " type="text" placeholder="邮箱地址" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">用户组</label>
+                        <div class="controls">
+                            <select class="span6 chosen" data-placeholder="Choose a Category" tabindex="1">
+                                <option value=""></option>
+                                <option value="Category 1">店员</option>
+                                <option value="Category 2">店长</option>
+                                <option value="Category 3">区域经理</option>
+                                <option value="Category 3">管理员</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <!--<div class="form-actions">-->
+                        <!--<button type="submit" class="btn blue">Submit</button>-->
+                        <!--<button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>-->
+                    <!--</div>-->
+
+
+                <!-- END FORM-->
+            </div>
+        </div>
+        <div class="form-actions modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+            <button type="submit" id="sub" class="btn blue">保存</button>
+        </div>
+        </form>
     </div>
 
 </div>
@@ -958,8 +1036,8 @@
 
 
     <!-- BEGIN CORE PLUGINS -->
-
-    <script src="/Public/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+    <!--<script src="/Public/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>-->
 
     <script src="/Public/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
@@ -998,6 +1076,9 @@
     <!-- END PAGE LEVEL PLUGINS -->
 
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <!--<script type="text/javascript" src="/Public/media/js/jquery.validate.min.js"></script>-->
     <script type="text/javascript" src="/Public/media/js/editable-table.js"></script>
     <script src="/Public/media/js/app.js"></script>
     <script src="/Public/media/js/table-managed.js"></script>
@@ -1008,6 +1089,45 @@
             App.init();
 
             TableManaged.init();
+
+            $("#addUserForm").validate({
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-inline error', // default input error message class
+                rules: {
+                    name: 'required',
+                    nickname: 'required',
+                },
+                messages: {
+                    name: "请输入您的名字",
+                    nickname: "请输入您的姓氏",
+                },
+                success: function (label) {
+
+                },
+                invalidHandler: function(form, validator) {  //不通过回调
+                    return false;
+                },
+                submitHandler: function (form) {
+                    var param = $("#addUserForm").serialize();
+                    console.log(param);
+                    $.ajax({
+                        type : "post",
+                        url : "/User/create",
+                        data : param,
+                        success : function(data){
+                            data = eval("(" + data + ")");
+                            if(data.errCode != 0){
+                                alert('添加失败,'+data.msg);
+                                return false;
+                            }
+                            else{
+                                alert('添加成功');
+                                location.reload();
+                            }
+                        }
+                    });
+                }
+            });
 
         });
 

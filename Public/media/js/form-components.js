@@ -1,5 +1,37 @@
 var FormComponents = function () {
 
+    $('#sample_1').editableTableWidget();
+
+    $('#sample_1 td').on('change', function(evt, newValue) {
+        // do something with the new cell value
+        target = evt.target;
+        name = $(target).data('name');
+        id = $(target).attr('tabindex');
+        if (!newValue) {
+            return false; // reject change
+        }else{
+            $.ajax({
+                type : "post",
+                url : "/Site/update",
+                data : "id=" + id+"&name="+name+"&value="+newValue,
+                async : false,
+                success : function(data){
+                    data = eval("(" + data + ")");
+                    // aDataSet = data;
+                    if(data.errCode != 0){
+                        alert('修改失败');
+                        $(target).text($("#temp").text());
+                        return false;
+                    }
+                    else{
+                        alert('修改成功');
+                        return true;
+                    }
+                }
+            });
+            return true;
+        }
+    });
     var handleWysihtml5 = function () {
         if (!jQuery().wysihtml5) {
             return;
