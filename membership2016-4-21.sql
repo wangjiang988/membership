@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2016-04-20 13:46:08
+-- Generation Time: 2016-04-21 10:34:08
 -- 服务器版本： 10.0.23-MariaDB-log
 -- PHP Version: 5.6.19
 
@@ -82,10 +82,10 @@ CREATE TABLE IF NOT EXISTS `ms_card` (
 --
 
 INSERT INTO `ms_card` (`id`, `vip_card`, `vip_card_password`, `member_id`, `status`, `token`, `last_login_ip`, `last_login_time`, `active_time`, `create_at`, `update_at`) VALUES
-(1, 'vip01', 'asdf', 22, 0, 'f1c38065712e7da32e46592be7bd2ca0', '127.0.0.1', '1461053872', '1460943515', '1460943515', '1461065633'),
-(64, 'vip02', 'asdf', 0, 0, '', '', '', '', '', ''),
-(65, 'vip03', 'asdf', 0, 0, '', '', '', '', '', ''),
-(66, 'vip04', 'asdf', 0, 0, '', '', '', '', '', ''),
+(1, 'vip01', 'asdf', 23, 0, 'f1c38065712e7da32e46592be7bd2ca0', '127.0.0.1', '1461053872', '1460943515', '1460943515', '1461065633'),
+(64, 'vip02', 'asdf', 24, 0, '', '', '', '', '', ''),
+(65, 'vip03', 'asdf', 24, 1, '', '', '', '', '', '1461147093'),
+(66, 'vip04', 'asdf', 25, 0, '', '', '', '', '', ''),
 (67, 'vip05', 'asdf', 0, 0, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
@@ -101,30 +101,25 @@ CREATE TABLE IF NOT EXISTS `ms_member` (
   `birth_year` varchar(8) CHARACTER SET utf8 NOT NULL COMMENT '生日-年',
   `birth_month` varchar(4) CHARACTER SET utf8 NOT NULL COMMENT '生日-月',
   `birth_day` varchar(4) CHARACTER SET utf8 NOT NULL COMMENT '生日-日',
-  `phone` varchar(13) CHARACTER SET utf8 NOT NULL COMMENT '手机号',
+  `phone` varchar(13) CHARACTER SET utf8 DEFAULT NULL COMMENT '手机号',
   `phone_status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '手机是否验证',
   `token` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT '登录token',
   `last_login_time` varchar(30) CHARACTER SET utf8 NOT NULL COMMENT '最新登录时间',
   `last_login_ip` varchar(20) CHARACTER SET utf8 NOT NULL COMMENT '最新登录ip',
+  `read_notices` varchar(3000) CHARACTER SET utf8 DEFAULT NULL COMMENT '已读ｎｏｔｉｃｅ　逗号隔开',
   `create_at` varchar(30) CHARACTER SET utf8 NOT NULL COMMENT '用户创建时间',
   `update_at` varchar(30) CHARACTER SET utf8 NOT NULL COMMENT '用户更新时间',
   `status` tinyint(2) DEFAULT '1' COMMENT '用户状态'
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 
 --
 -- 转存表中的数据 `ms_member`
 --
 
-INSERT INTO `ms_member` (`id`, `name`, `birth`, `birth_year`, `birth_month`, `birth_day`, `phone`, `phone_status`, `token`, `last_login_time`, `last_login_ip`, `create_at`, `update_at`, `status`) VALUES
-(1, '新会员', '2016-01-05', '2016', '1', '1', '15511111111', 0, '', '1460943515', '', '1460943515', '1460963568', 0),
-(4, 'wj', '2016-04-10', '', '', '', '18626210575', 0, '', '', '', '1460965636', '', 1),
-(5, 'wj', '2016-04-01', '', '', '', '18626210573', 1, '', '', '', '1461048756', '', 1),
-(7, 'wj', '2016-04-13', '', '', '', '18626210574', 1, '', '', '', '1461050261', '', 1),
-(11, 'aaa', '2016-04-05', '', '', '', '18626210576', 1, '', '', '', '1461052599', '', 1),
-(15, '系统生成用户', '', '', '', '', '', 0, '4ba92acf7c72dd16089954dbf5eea63d', '1461122204', '127.0.0.1', '', '', 0),
-(19, '系统生成用户', '', '', '', '', '90cdb1045d44d', 0, '90cdb1045d44d7005618da35d6c121c2', '1461122430', '127.0.0.1', '', '', 0),
-(21, 'wj', '2016-04-21', '', '', '', '18626210577', 1, '', '', '', '1461129931', '', 1),
-(22, '系统生成用户', '', '', '', '', '2dc88eb197aeb', 0, '2dc88eb197aeb74cef81fdf36adb0e5a', '1461130268', '127.0.0.1', '', '', 0);
+INSERT INTO `ms_member` (`id`, `name`, `birth`, `birth_year`, `birth_month`, `birth_day`, `phone`, `phone_status`, `token`, `last_login_time`, `last_login_ip`, `read_notices`, `create_at`, `update_at`, `status`) VALUES
+(23, 'wj', '2016-04-21', '', '', '', '18626210573', 1, '8bb72bc6e58e2270111ae0da358bba1b', '1461136989', '127.0.0.1', '', '1461205875', '', 1),
+(24, 'wj', '2016-04-14', '', '', '', '18626210569', 1, 'aa24c79ba8cd4fb8c97e1763687fbc22', '1461140833', '127.0.0.1', '1,3', '1461140873', '', 1),
+(25, '系统生成用户', '', '', '', '', 'b1295373d46c0', 0, 'b1295373d46c0107a908c87bb0ef1c03', '1461150996', '127.0.0.1', NULL, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -256,7 +251,7 @@ ALTER TABLE `ms_card`
 -- AUTO_INCREMENT for table `ms_member`
 --
 ALTER TABLE `ms_member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `ms_module`
 --
