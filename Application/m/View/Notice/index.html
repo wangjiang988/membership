@@ -22,15 +22,14 @@
         <article class="active">
 
             <ul class="list inset demo-list">
+                <volist name="list" id="vo" >
                 <li 　>
-                    <div class="notice unread" data-id="3">这是没有读过的公告,这是没有读过的公告这是没.....</div>
+                    <div class="notice
+                    <if condition="$vo.read eq '0' ">unread<else/>read</if>
+                    " data-id="{$vo.id}">
+                        {$vo.title|msubstr=0,20}</div>
                 </li>
-                <li 　>
-                    <div  class="read notice" data-id="2">这是读过的公告,这是读过的公告这是读过......</div>
-                </li>
-                <li 　>
-                    <div class="read notice" data-id="1">这是读过的公告,这是读过的公告,这是读......</div>
-                </li>
+                </volist>
             </ul>
             <a href="#" id="goback" class="button block tm10">返回</a>
 
@@ -49,14 +48,14 @@
     Jingle.launch();
     $(function(){
         $('#goback').click(function(){
-            location.href = "{:U('m/Member/index')}";
+            location.href = "{:U('m/Member/index')}?token={$token}";
         });
 
         $('.notice').each(function(){
             $(this).click(function(){
                 id = $(this).data('id');
-                location.href = "{:U('m/Notice/view')}"+"?id="+id;
-////                $(this).hasClass('unread').removeClass('unread').addClass('read');
+                //修改纸条状态
+                location.href = "{:U('m/Notice/view')}?id="+id+'&token={$token}';
             });
         });
 

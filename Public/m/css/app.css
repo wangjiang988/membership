@@ -35,3 +35,20 @@ input{
     color:#666666;
     font-size: 14px;
 }
+.center{
+    text-align: center;
+}
+
+#verifyMask{
+    color: #fff;
+    background-color: #46CA5E;
+    display: inline-block;
+    padding: 8px 14px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}

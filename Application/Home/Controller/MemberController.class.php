@@ -20,14 +20,15 @@ class MemberController extends BaseController
     public function index()
     {
         $where = array();
-        $where['1'] = '1';
+        $where['phone'] = array('exp',' is not null');
         $searchForm = I('post.searchForm');
         if($searchForm){
             $search = I('post.');
             if(!empty(trim($search['search_name'])))
                 $where['name'] = array('LIKE','%'.trim($search['search_name'])."%");
             if(!empty(trim($search['search_phone'])))
-            $where['phone'] = array('LIKE','%'.trim($search['search_phone']).'%');
+//            $where['phone'] = array('LIKE','%'.trim($search['search_phone']).'%');
+            $where['phone'] = array('exp','like \'%'.trim($search['search_phone']).'%\' and phone is not null');
             //这个比较复杂,要先根据卡号查询到用户ID ,然后在ＩＤ　中查询用户
             if(!empty(trim($search['search_card']))){
                 $card_model = D('card');

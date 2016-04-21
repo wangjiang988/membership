@@ -26,7 +26,7 @@
             </div>
             <ul class="list">
                 <li data-icon="next" data-selected="selected">
-                    <a href="#" id="notice">公告<span style="float: right; padding-right: 10px;">5</span></a>
+                    <a href="#" id="notice">公告<span style="float: right; padding-right: 10px;"><?php echo ($unread_num); ?></span></a>
                 </li>
                 <li data-icon="next" data-selected="selected">
                     <a href="#" id="mywxcard">我的微信卡券</a>
@@ -51,13 +51,13 @@
     Jingle.launch();
     $(function(){
         $('#mycard').click(function(){
-            location.href = "<?php echo U('m/Member/mycard');?>";
+            location.href = "<?php echo U('m/Member/mycard');?>?token=<?php echo ($token); ?>";
         });
         $('#mywxcard').click(function(){
-            location.href = "<?php echo U('m/Member/mywxcard');?>";
+            location.href = "<?php echo U('m/Member/mywxcard');?>?token=<?php echo ($token); ?>";
         });
         $('#notice').click(function(){
-            location.href = "<?php echo U('m/Notice/index');?>";
+            location.href = "<?php echo U('m/Notice/index');?>?token=<?php echo ($token); ?>";
         });
     });
 </script>

@@ -22,6 +22,7 @@
             </header>
             <article class="active ">
                 <form class="input-group" id="profileForm" method="post" action="{:U('m/Index/profile')}">
+                    <input type="hidden" name="token" id="token" value="{:I('get.token')}">
                     <input type="hidden" name="card_id" id="card_id" value="{:I('get.id')}">
                     <input type="text" name="name" id="name" placeholder="姓名">
                     <div class="input-row">
@@ -29,8 +30,13 @@
                         <input type="date" id="birth" name="birth" placeholder="生日">
                     </div>
                     <input type="text" id="phone" name="phone" placeholder="手机号码">
-                    <a class="button" id="getVerify" style="position: absolute; right: 2.1em;top:7.3em;">获取验证码</a>
-                    <input type="text" id="verifyCode" name="verifyCode" placeholder="验证码">
+                    <input name="verify" id="verify" width="50%" value="" class="captcha-text" placeholder="图形验证码" type="text">
+                    <img id="verifyImg" style="font-size:inherit;position: absolute;right: 2.1em;top:10.4em;width: 104px"
+                         alt="验证码" src="{:U('m/Index/verify_c')}?token={$token}" title="点击刷新">
+                    <a class="button" id="getVerify" style="position: absolute; right: 2.1em;top: 13.6em;z-index: 10;">获取验证码</a>
+                    <span class="green" disabled="disabled" id="verifyMask"
+                          style="position: absolute; right: 2.1em;top: 13.6em;z-index: 9;display: none;">重新获取验证码</span>
+                    <input type="text" id="verifyCode" name="verifyCode" placeholder="手机验证码">
                 </form>
                 <a href="#" class="button block" id="submit">提交</a>
                 <!---do it yourself --->
@@ -50,6 +56,8 @@
 <script type="text/javascript" src="__PUBLIC__/m/js/app.js?r=<?php echo  rand(10000,99999); ?>"></script>
 <script>
     Jingle.launch();
+    var countdown =60;
+
     $(function(){
         $('#birth').change(function(){
             if($(this).val()!=''){
@@ -58,9 +66,52 @@
                 $('#birthSpan').show();
             }
         });
+
+        //点击图片验证码，刷新
+        var captcha_img = $('#verifyImg');
+        var verifyimg = captcha_img.attr("src");
+        captcha_img.attr('title', '点击刷新');
+        captcha_img.click(function(){
+            if( verifyimg.indexOf('?')>0){
+                $(this).attr("src", verifyimg+'&random='+Math.random());
+            }else{
+                $(this).attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());
+            }
+        });
+
         //TODO 点击获取验证码,1分钟内无效
         $('#getVerify').click(function(){
+            imgVerify = $('#verify').val();
+            phone = $('#phone').val();
+            if(imgVerify =='' || imgVerify==undefined){
+                J.alert('提示','请输入图片验证码');
+            }
+            //验证手机格式是否正确
+            if(!checkMobile(phone)){
+                J.alert('提示','请检查您的手机号码格式是否正确');
+            }
 
+            //验证图片验证码
+            $.post("{:U('m/Index/getVerifyCode')}?token={$token}",{
+                imgVerify:$('#verify').val(),
+                phone:phone,
+            },function (data) {
+                data = eval('('+data+')');
+                if(data.errCode == 200){
+                    //发送成功
+                    //读秒
+                    $('#verifyMask').css('z-index','12');
+                    $('#verifyMask').show();
+                    settime(60);
+
+                } else if(data.errCode == 400){
+                    //发送,图形验证码错误
+                    J.alert('提示',data.msg);
+                }else{
+                    //发送失败
+                    J.alert('提示',data.msg);
+                }
+            });
         });
 
         $('#submit').click(function(){
@@ -82,15 +133,34 @@
                     //TODO 成功,进入到微信卡券领取页面
                     J.Toast.show('toast',data.msg);
 //                    J.alert('提示',data.msg);
-
-                    location.href="{:U('m/Index/getwxcard')}";
+                    token = data.data.token;
+                    location.href="{:U('m/Index/getwxcard')}"+"?token="+token;
                 }
-
             });
             return false;
         });
 
-    })
+    });
+    var countdown =60;
+
+    function settime(counttime) {
+        if (countdown == 0) {
+            $('#verifyMask').css('z-index','9');
+            $('#verifyMask').hide();
+            countdown = counttime;
+        } else {
+            $('#verifyMask').html("重新发送(" + countdown + ")秒");
+            countdown--;
+        }
+        t = setTimeout(function() {
+            settime(60)
+        },1000);
+        if(countdown == 60) {
+            clearTimeout(t);
+        }
+    }
+
+
 </script>
 </body>
 </html>

@@ -23,12 +23,10 @@
 
             <ul class="list inset demo-list">
                 <li 　>
-                    <div class="title">这是标题</div>
+                    <div class="title center"><?php echo ($notice["title"]); ?></div>
                 </li>
                 <li 　>
-                    <div class="notice_content">这是没有读过的公告,这是没有读过的公告这是没..有读过的公告这是没..有
-                        读过的公告这是没..有读过的公告这是没..有读过的公告这是没..
-                        有读过的公告这是没..有读过的公告这是没.....</div>
+                    <div class="notice_content"><?php echo ($notice["content"]); ?></div>
                 </li>
                 　
             </ul>
@@ -49,7 +47,7 @@
     Jingle.launch();
     $(function(){
         $('#goback').click(function(){
-            location.href = "<?php echo U('m/Notice/index');?>";
+            location.href = "<?php echo U('m/Notice/index');?>?token=<?php echo ($token); ?>";
         });
 
     });

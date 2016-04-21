@@ -25,18 +25,14 @@
                 <div class="title">王将</div>
             </div>
             <ul class="list inset demo-list">
+
+                <volist name="list" id="vo" >
                 <li 　>
-                    <div>卡号：vip01</div>
-                    <div>密码：asdf</div>
+                    <div>卡号：{$vo.vip_card }</div>
+                    <div>密码：{$vo.vip_card_password}</div>
                 </li>
-                <li 　>
-                    <div>卡号：vip01</div>
-                    <div>密码：asdf</div>
-                </li>
-                <li 　>
-                    <div>卡号：vip01</div>
-                    <div>密码：asdf</div>
-                </li>
+                </volist>
+
             </ul>
 
             <a href="#" id="addCard" class="button block tm10">新增会员卡</a>
@@ -58,11 +54,11 @@
     $(function(){
         $('#addCard').click(function(){
             //进入新增会员卡页面
-            location.href="{:U('m/Member/addcard')}";
+            location.href="{:U('m/Member/addcard')}?token={$token}";
         });
 
         $('#goback').click(function(){
-            location.href = "{:U('m/Member/index')}";
+            location.href = "{:U('m/Member/index')}?token={$token}";
         });
     });
 </script>

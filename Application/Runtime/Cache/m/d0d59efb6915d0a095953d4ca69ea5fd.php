@@ -22,15 +22,12 @@
         <article class="active">
 
             <ul class="list inset demo-list">
-                <li 　>
-                    <div class="notice unread" data-id="3">这是没有读过的公告,这是没有读过的公告这是没.....</div>
-                </li>
-                <li 　>
-                    <div  class="read notice" data-id="2">这是读过的公告,这是读过的公告这是读过......</div>
-                </li>
-                <li 　>
-                    <div class="read notice" data-id="1">这是读过的公告,这是读过的公告,这是读......</div>
-                </li>
+                <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li 　>
+                    <div class="notice
+                    <?php if($vo["read"] == '0' ): ?>unread<?php else: ?>read<?php endif; ?>
+                    " data-id="<?php echo ($vo["id"]); ?>">
+                        <?php echo (msubstr($vo["title"],0,20)); ?></div>
+                </li><?php endforeach; endif; else: echo "" ;endif; ?>
             </ul>
             <a href="#" id="goback" class="button block tm10">返回</a>
 
@@ -49,14 +46,14 @@
     Jingle.launch();
     $(function(){
         $('#goback').click(function(){
-            location.href = "<?php echo U('m/Member/index');?>";
+            location.href = "<?php echo U('m/Member/index');?>?token=<?php echo ($token); ?>";
         });
 
         $('.notice').each(function(){
             $(this).click(function(){
                 id = $(this).data('id');
-                location.href = "<?php echo U('m/Notice/view');?>"+"?id="+id;
-////                $(this).hasClass('unread').removeClass('unread').addClass('read');
+                //修改纸条状态
+                location.href = "<?php echo U('m/Notice/view');?>?id="+id+'&token=<?php echo ($token); ?>';
             });
         });
 

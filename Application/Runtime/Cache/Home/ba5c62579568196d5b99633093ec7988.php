@@ -611,15 +611,15 @@
 
             <form class="sidebar-search">
 
-                <div class="input-box">
+                <!--<div class="input-box">-->
 
-                    <a href="javascript:;" class="remove"></a>
+                    <!--<a href="javascript:;" class="remove"></a>-->
 
-                    <input type="text" placeholder="Search..." />
+                    <!--<input type="text" placeholder="Search..." />-->
 
-                    <input type="button" class="submit" value=" " />
+                    <!--<input type="button" class="submit" value=" " />-->
 
-                </div>
+                <!--</div>-->
 
             </form>
 
@@ -641,7 +641,7 @@
 
         </li>
         <li class="
-             <?php if($uri == 'Member' ): ?>active<?php endif; ?>
+             <?php if($controller == 'Member' or $controller == 'Card' ): ?>active<?php endif; ?>
         ">
         <a href="javascript:;">
             <i class="icon-th"></i>
@@ -649,7 +649,7 @@
             <span class="selected"></span>
             <!--<span class="arrow open"></span>-->
                     <span class="arrow
-                     <?php if($controller == 'Member' ): ?>open<?php endif; ?>
+                     <?php if($controller == 'Member' or $controller == 'Card' ): ?>open<?php endif; ?>
             "></span>
 
         </a>
@@ -657,7 +657,7 @@
         <ul class="sub-menu">
 
             <li
-            <?php if($uri == 'Member/index' ): ?>active<?php endif; ?>
+            <?php if($uri == 'Member/index' ): ?>class="active"<?php endif; ?>
             >
 
             <a href="<?php echo U('Member/index');?>">
@@ -666,10 +666,10 @@
 
             </li>
             <li
-            <?php if($uri == 'Member/index' ): ?>active<?php endif; ?>
+            <?php if($uri == 'Card/index' ): ?>class="active"<?php endif; ?>
             >
 
-            <a href="<?php echo U('Member/index');?>">
+            <a href="<?php echo U('Card/index');?>">
 
                 会员卡列表</a>
 
@@ -694,18 +694,22 @@
             </ul>
 
         </li>
-        <li class="">
+        <li class="
+        <?php if($controller == 'Notice' ): ?>active<?php endif; ?>
+        ">
             <a href="javascript:;">
                 <i class="icon-sitemap"></i>
                 <span class="title">公告管理</span>
                 <span class="selected"></span>
-                <span class="arrow"></span>
+                <span class="arrow <?php if($controller == 'Notice' ): ?>open<?php endif; ?>"></span>
 
             </a>
 
             <ul class="sub-menu">
-                <li >
-                    <a href="layout_horizontal_sidebar_menu.html">
+                <li
+                <?php if($uri == 'Notice/index' ): ?>class="active"<?php endif; ?>
+                >
+                    <a href="<?php echo U('Notice/index');?>">
                         公告列表</a>
                 </li>
             </ul>
@@ -746,16 +750,16 @@
             <a href="<?php echo U('User/index');?>">
                 用户列表</a>
             </li>
-            <li
-            <?php if($uri == '' ): ?>class="active"<?php endif; ?>
-            >
-            <a href="login.html">
-                用户组管理</a>
-            </li>
-            <li >
-                <a href="login.html">
-                    用户组权限管理</a>
-            </li>
+            <!--<li-->
+            <!--<?php if($uri == '' ): ?>class="active"<?php endif; ?>-->
+            <!--&gt;-->
+            <!--<a href="login.html">-->
+                <!--用户组管理</a>-->
+            <!--</li>-->
+            <!--<li >-->
+                <!--<a href="login.html">-->
+                    <!--用户组权限管理</a>-->
+            <!--</li>-->
 
         </ul>
 

@@ -726,16 +726,16 @@
             <a href="<?php echo U('User/index');?>">
                 用户列表</a>
             </li>
-            <li
-            <?php if($uri == '' ): ?>class="active"<?php endif; ?>
-            >
-            <a href="login.html">
-                用户组管理</a>
-            </li>
-            <li >
-                <a href="login.html">
-                    用户组权限管理</a>
-            </li>
+            <!--<li-->
+            <!--<?php if($uri == '' ): ?>class="active"<?php endif; ?>-->
+            <!--&gt;-->
+            <!--<a href="login.html">-->
+                <!--用户组管理</a>-->
+            <!--</li>-->
+            <!--<li >-->
+                <!--<a href="login.html">-->
+                    <!--用户组权限管理</a>-->
+            <!--</li>-->
 
         </ul>
 

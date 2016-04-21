@@ -20,8 +20,7 @@
             <h1 class="title">新增会员卡</h1>
         </header>
         <article class="active ">
-            <form class="input-group" id="addForm" method="post" action="<?php echo U('m/Member/addcard');?>">
-                <input type="hidden" name="member_id" value="">
+            <form class="input-group" id="addForm" method="post" action="<?php echo U('m/Member/addcard');?>?token=<?php echo ($token); ?>">
                 <input type="text" name="vip_card" placeholder="请输入您的会员卡号">
                 <input type="password" name="vip_card_password" placeholder="请输入您的会员卡密码">
             </form>
@@ -46,13 +45,11 @@
         $('#addForm').bind('submit', function(){
             ajaxSubmit(this, function(data){
                 data = eval('('+data+')');
-                if(data.errCode !==200){
+                if(data.errCode !=200){
                     J.Toast.show('toast',data.msg);
 //                    J.alert('提示',data.msg);
                 }else{
-                    id = data.data.id;
-                    url = "<?php echo U('m/Member/index');?>";
-                    url += "?id="+id;
+                    url = "<?php echo U('m/Member/mycard');?>?token=<?php echo ($token); ?>";
                     location.href=url;
                 }
             });

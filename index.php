@@ -27,8 +27,6 @@ define('BIND_MODULE','Home');
 define('__APP__', '');
 //定义网站根目录
 define('WEB_PATH',dirname(__FILE__));
-//定义kint方法
-require './kint/Kint.class.php';
 
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';

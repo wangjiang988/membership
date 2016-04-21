@@ -22,7 +22,7 @@
             </header>
             <article class="active ">
                  恭喜您获得一张微信卡券
-                <a class="button small alizarin" href="<?php echo U('m/Member/index');?>">我的会员区</a>
+                <a class="button small alizarin" href="<?php echo U('m/Member/index');?>?token=<?php echo $_GET['token']?>">我的会员区</a>
             </article>
         </section>
     </div>

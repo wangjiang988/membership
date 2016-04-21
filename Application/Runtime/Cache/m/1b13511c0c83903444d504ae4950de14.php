@@ -26,7 +26,6 @@
                     <input type="password" name="vip_card_password" placeholder="请输入您的会员卡密码">
                 </form>
                 <a href="#" class="button block" id="submit">登录</a>
-                <!---do it yourself --->
             </article>
         </section>
     </div>
@@ -51,13 +50,17 @@
         $('#loginForm').bind('submit', function(){
             ajaxSubmit(this, function(data){
                 data = eval('('+data+')');
+                 if(data.errCode ==302) {
+                     location.href=data.data.url;
+                 }
                 if(data.errCode !==200){
                     J.Toast.show('toast',data.msg);
 //                    J.alert('提示',data.msg);
                 }else{
+                    token = data.data.token;
                     id = data.data.id;
                     url = "<?php echo U('m/Index/profile');?>";
-                    url += "?id="+id;
+                    url += "?id="+id+"&token="+token;
                     location.href=url;
                 }
             });

@@ -25,18 +25,12 @@
                 <div class="title">王将</div>
             </div>
             <ul class="list inset demo-list">
-                <li 　>
-                    <div>卡号：vip01</div>
-                    <div>密码：asdf</div>
-                </li>
-                <li 　>
-                    <div>卡号：vip01</div>
-                    <div>密码：asdf</div>
-                </li>
-                <li 　>
-                    <div>卡号：vip01</div>
-                    <div>密码：asdf</div>
-                </li>
+
+                <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li 　>
+                    <div>卡号：<?php echo ($vo["vip_card"]); ?></div>
+                    <div>密码：<?php echo ($vo["vip_card_password"]); ?></div>
+                </li><?php endforeach; endif; else: echo "" ;endif; ?>
+
             </ul>
 
             <a href="#" id="addCard" class="button block tm10">新增会员卡</a>
@@ -58,11 +52,11 @@
     $(function(){
         $('#addCard').click(function(){
             //进入新增会员卡页面
-            location.href="<?php echo U('m/Member/addcard');?>";
+            location.href="<?php echo U('m/Member/addcard');?>?token=<?php echo ($token); ?>";
         });
 
         $('#goback').click(function(){
-            location.href = "<?php echo U('m/Member/index');?>";
+            location.href = "<?php echo U('m/Member/index');?>?token=<?php echo ($token); ?>";
         });
     });
 </script>

@@ -29,7 +29,6 @@ class MemberModel extends Model
          $pageM = new Page($count, $perPage);
          $show = $pageM->show();
          $list = $this->where($where)->limit($perPage)->page($page)->order('create_at DESC')->select();
-
          return [
              'list'=>$list,
              'page'=>$show,
